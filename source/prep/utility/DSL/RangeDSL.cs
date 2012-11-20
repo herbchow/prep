@@ -14,6 +14,9 @@ namespace prep.utility.DSL
 
         public List<RangeEntry> Operations { get; set; }
 
+        // TODO: Return different IRangeDSL implementations to help guide sentence to avoid multiple
+        // LessThan or GreaterThan's
+
         public static RangeDSL<TProperty> Range()
         {
             return new RangeDSL<TProperty>(){Operations = new List<RangeEntry>()};

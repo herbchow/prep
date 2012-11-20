@@ -1,4 +1,5 @@
 ﻿using System;
+using prep.utility.DSL;
 using prep.utility.ranges;
 
 namespace prep.utility.filtering
@@ -14,13 +15,35 @@ namespace prep.utility.filtering
 
         public bool matches(T item)
         {
-            var accumulatedResult = true;
-            if (_range.GreaterThanSet)
-                accumulatedResult &= item.CompareTo(_range.GreaterThanValue) > 0;
-            if (_range.LessThanSet)
-                accumulatedResult &= item.CompareTo(_range.LessThanValue) < 0;
-
-            return accumulatedResult;
+            foreach(var operation in _range.Operations)
+            {
+                if( operation.Operation == RangeOperation<T>.GreaterThan)
+                {
+                    if (!(item.CompareTo(operation.ValueToCompare) > 0))
+                        return false;
+                }
+                else if( operation.Operation == RangeOperation<T>.Equal)
+                {
+                    if (item.CompareTo(operation.ValueToCompare) != 0)
+                        return false;
+                }
+                else if(operation.Operation == RangeOperation<T>.LessThan)
+                {
+                    if (!(item.CompareTo(operation.ValueToCompare) < 0))
+                        return false;
+                }
+                else if(operation.Operation == RangeOperation<T>.GreaterThanOrEqual)
+                {
+                    if (!(item.CompareTo(operation.ValueToCompare) >= 0))
+                        return false;
+                }
+                else if(operation.Operation == RangeOperation<T>.LessThanOrEqual)
+                {
+                    if (!(item.CompareTo(operation.ValueToCompare) <= 0))
+                        return false;
+                }
+            }
+            return true;
         }
     }
 }

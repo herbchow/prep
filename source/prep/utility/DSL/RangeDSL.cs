@@ -8,44 +8,44 @@ namespace prep.utility.DSL
     {
         public class RangeEntry
         {
-            public RangeOperation Operation;
+            public RangeOperation<TProperty> Operation;
             public TProperty ValueToCompare;
         }
 
-        public List<RangeEntry> Operations = new List<RangeEntry>();
+        public List<RangeEntry> Operations { get; set; }
 
         public static RangeDSL<TProperty> Range()
         {
-            return new RangeDSL<TProperty>();
+            return new RangeDSL<TProperty>(){Operations = new List<RangeEntry>()};
         }
 
         public IRangeDSL<TProperty> GreaterThan(TProperty prop)
         {
-            Operations.Add(new RangeEntry { Operation = RangeOperation.GreaterThan, ValueToCompare = prop });
+            Operations.Add(new RangeEntry { Operation = RangeOperation<TProperty>.GreaterThan, ValueToCompare = prop });
             return this;
         }
 
         public IRangeDSL<TProperty> LessThan(TProperty prop)
         {
-            Operations.Add(new RangeEntry { Operation = RangeOperation.LessThan, ValueToCompare = prop });
+            Operations.Add(new RangeEntry { Operation = RangeOperation<TProperty>.LessThan, ValueToCompare = prop });
             return this;
         }
 
         public IRangeDSL<TProperty> GreaterThanOrEqual(TProperty prop)
         {
-            Operations.Add(new RangeEntry { Operation = RangeOperation.GreaterThanOrEqual, ValueToCompare = prop });
+            Operations.Add(new RangeEntry { Operation = RangeOperation<TProperty>.GreaterThanOrEqual, ValueToCompare = prop });
             return this;
         }
 
         public IRangeDSL<TProperty> LessThanOrEqual(TProperty prop)
         {
-            Operations.Add(new RangeEntry { Operation = RangeOperation.LessThanOrEqual, ValueToCompare = prop });
+            Operations.Add(new RangeEntry { Operation = RangeOperation<TProperty>.LessThanOrEqual, ValueToCompare = prop });
             return this;
         }
 
         public IRangeDSL<TProperty> Equal(TProperty prop)
         {
-            Operations.Add(new RangeEntry { Operation = RangeOperation.Equal, ValueToCompare = prop });
+            Operations.Add(new RangeEntry { Operation = RangeOperation<TProperty>.Equal, ValueToCompare = prop });
             return this;
         }
     }

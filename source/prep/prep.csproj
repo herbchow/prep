@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="collections\FilteringDateExtensions.cs" />
     <Compile Include="collections\Genre.cs" />
+    <Compile Include="collections\HerbExtensions.cs" />
     <Compile Include="collections\IMatchAMovie.cs" />
     <Compile Include="collections\MatchCreationExtensionPoint.cs" />
     <Compile Include="collections\FilteringExtensions.cs" />

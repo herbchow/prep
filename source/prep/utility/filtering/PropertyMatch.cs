@@ -3,6 +3,8 @@
   public class PropertyMatch<ItemToFilter, PropertyType> : IMatchAn<ItemToFilter>
   {
     PropertyAccessor<ItemToFilter, PropertyType> accessor;
+
+    // x => x.genre
     IMatchAn<PropertyType> specification;
 
     public PropertyMatch(PropertyAccessor<ItemToFilter, PropertyType> accessor, IMatchAn<PropertyType> specification)

@@ -11,10 +11,10 @@ namespace prep.collections
       return new MatchFactory<ItemToFilter, TProperty>(accessor);
     }
 
-    public static ComparableMatchFactory<ItemToFilter, TProperty> has_an<TProperty>(
-      PropertyAccessor<ItemToFilter, TProperty> accessor) where TProperty : IComparable<TProperty>
+    public static ComparableMatchFactory<ItemToFilter, SomeProperty> has_an<SomeProperty>(
+      PropertyAccessor<ItemToFilter, SomeProperty> accessor) where SomeProperty : IComparable<SomeProperty>
     {
-      return new ComparableMatchFactory<ItemToFilter, TProperty>(has_a(accessor));
+      return new ComparableMatchFactory<ItemToFilter, SomeProperty>(has_a(accessor));
     }
   }
 }

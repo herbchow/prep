@@ -1,4 +1,4 @@
 ﻿namespace prep.utility.filtering
 {
-  public delegate TProperty PropertyAccessor<TItem,TProperty>(TItem item);
+  public delegate TProperty PropertyAccessor<in TItem, out TProperty>(TItem item);
 }

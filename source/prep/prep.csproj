@@ -58,9 +58,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="collections\ComparableMatchFactory.cs" />
+    <Compile Include="collections\DateMatchFactory.cs" />
     <Compile Include="collections\Genre.cs" />
     <Compile Include="collections\IMatchAMovie.cs" />
+    <Compile Include="utility\DSL\RangeOperation.cs" />
     <Compile Include="utility\filtering\FallsInRange.cs" />
+    <Compile Include="utility\filtering\FallsInRangeDSL.cs" />
     <Compile Include="utility\filtering\IsBetween.cs" />
     <Compile Include="utility\filtering\IsGreaterThan.cs" />
     <Compile Include="collections\IsInGenre.cs" />
@@ -84,7 +87,9 @@
     <Compile Include="utility\filtering\PropertyAccessor.cs" />
     <Compile Include="utility\filtering\MatchFactory.cs" />
     <Compile Include="utility\filtering\PropertyMatch.cs" />
+    <Compile Include="utility\DSL\RangeDSL.cs" />
     <Compile Include="utility\ranges\IContainValues.cs" />
+    <Compile Include="utility\DSL\IRangeDSL.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

@@ -40,6 +40,11 @@ namespace prep.collections
       return create_to_match(new FallsInRange<TProperty>(range));
     }
 
+    public IMatchAn<ItemToFilter> falls_in(IRangeDSL<TProperty> range)
+    {
+        return create_to_match(new FallsInRangeDSL<TProperty>(range));
+    }
+
     public IMatchAn<ItemToFilter> greater_than(TProperty value)
     {
       return create_to_match(new IsGreaterThan<TProperty>(value));

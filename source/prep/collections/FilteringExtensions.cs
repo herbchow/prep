@@ -9,6 +9,12 @@ namespace prep.collections
     {
         public static IMatchAn<ItemToFilter> equal_to<ItemToFilter, TProperty>(this MatchCreationExtensionPoint<ItemToFilter, TProperty> extension_point, TProperty value)
         {
+            if (extension_point.isNegated)
+            {
+                extension_point.isNegated = false;
+                return not_equal_to(extension_point, value);
+            }
+            
             return equal_to_any(extension_point, value);
         }
 

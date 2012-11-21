@@ -70,6 +70,9 @@
     <Compile Include="collections\Movie.cs" />
     <Compile Include="collections\MovieLibrary.cs" />
     <Compile Include="collections\ProductionStudio.cs" />
+    <Compile Include="gemskata\CanvasCell.cs" />
+    <Compile Include="gemskata\GemBlocks.cs" />
+    <Compile Include="gemskata\GemSolverCanvas.cs" />
     <Compile Include="gemskata\GemsSolver.cs" />
   </ItemGroup>
   <ItemGroup>

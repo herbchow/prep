@@ -19,6 +19,7 @@ namespace prep.gemskata
             protected static GemsSolver Solver;
             Establish c = () =>
                               {
+                                  Solver = new GemsSolver();
                               };
         };
 
@@ -26,10 +27,8 @@ namespace prep.gemskata
         {
             static int result;
 
-            Establish c = () =>
-                Solver = new GemsSolver(1, 2);
             Because b = () =>
-                result = Solver.Solve();
+                result = Solver.Solve(1,2);
 
             It should_return_7 = () =>
                                      {
@@ -42,10 +41,8 @@ namespace prep.gemskata
         {
             static int result;
 
-            Establish c = () =>
-                Solver = new GemsSolver(2, 2);
             Because b = () =>
-                result = Solver.Solve();
+                result = Solver.Solve(2,2);
 
             It should_return_71 = () =>
             {
@@ -58,10 +55,8 @@ namespace prep.gemskata
         {
             static int result;
 
-            Establish c = () =>
-                Solver = new GemsSolver(3, 4);
             Because b = () =>
-                result = Solver.Solve();
+                result = Solver.Solve(3,4);
 
             It should_return_211351945 = () =>
             {

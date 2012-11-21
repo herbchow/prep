@@ -7,13 +7,18 @@ namespace prep.gemskata
 {
     public class GemsSolver
     {
-        public GemsSolver(int n,int k)
+        public GemsSolver()
         {
             
         }
 
-        public int Solve()
+        public int Solve(int n, int k)
         {
+            // For each possible permutation
+            int width = 2 ^ n;
+            int height = k;
+
+
             throw new NotImplementedException();
         }
     }

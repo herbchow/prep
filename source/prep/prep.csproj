@@ -72,7 +72,7 @@
     <Compile Include="collections\ProductionStudio.cs" />
     <Compile Include="gemskata\CanvasCell.cs" />
     <Compile Include="gemskata\GemBlocks.cs" />
-    <Compile Include="gemskata\GemSolverCanvas.cs" />
+    <Compile Include="gemskata\Canvas.cs" />
     <Compile Include="gemskata\GemsSolver.cs" />
   </ItemGroup>
   <ItemGroup>

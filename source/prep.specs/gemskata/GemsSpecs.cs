@@ -1,8 +1,71 @@
-﻿using Machine.Specifications;
+﻿using System;
+using Machine.Specifications;
+using developwithpassion.specifications.extensions;
 using developwithpassion.specifications.rhinomocks;
+using prep.gemskata;
 
-namespace prep.gemskata
+namespace prep.specs.gemskata
 {
+    public class GemSolverCanvasSpecs
+    {
+        [Subject(typeof(Canvas))]
+        public abstract class gem_solver_canvas_concern : Observes<Canvas>
+        {
+            Establish e = () =>
+                              {
+                                  sut = new Canvas();
+                              };
+        }
+
+        public class when_n_exceeds_constraint : gem_solver_canvas_concern
+        {
+            Because b = () =>
+                spec.catch_exception(() => sut.SetDimensions(2^1025,5));
+
+            It should_throw_argument_exception = () =>
+            {
+                spec.exception_thrown.ShouldBeAn<ArgumentException>();
+            };
+        }
+
+        public class when_n_is_within_constraint : gem_solver_canvas_concern
+        {
+            Establish b = () =>
+                spec.catch_exception(() => sut.SetDimensions(2^1024,5));
+
+            It should_throw_argument_exception = () =>
+            {
+                spec.exception_thrown.ShouldBeNull();
+            };
+        }
+
+       public class when_k_is_too_large : gem_solver_canvas_concern
+       {
+           Establish b = () =>
+               spec.catch_exception(() => sut.SetDimensions(2^1024,6));
+
+           It should_throw_argument_exception = () =>
+           {
+               spec.exception_thrown.ShouldBeAn<ArgumentException>();
+           };
+       }
+
+       public class when_k_is_too_small : gem_solver_canvas_concern
+       {
+           Establish b = () =>
+               spec.catch_exception(() => sut.SetDimensions(2^1024,0));
+
+           It should_throw_argument_exception = () =>
+           {
+               spec.exception_thrown.ShouldBeAn<ArgumentException>();
+           };
+       }
+
+//1 ≤ T ≤ 100
+//0 ≤ N ≤ 1024
+//1 ≤ K ≤ 5
+    }
+
     public class GemsSpecs
     {
         [Subject(typeof(GemsSolver))]

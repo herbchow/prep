@@ -6,7 +6,7 @@ namespace prep.gemskata
     public class Canvas
     {
         private CanvasCell[,] _canvas;
-
+        public List<Canvas> SuccessfulResults { get; set; } 
         private int _width;
 
         public int Width
@@ -76,26 +76,49 @@ namespace prep.gemskata
 
         public bool TryFitBlockInCell(GemBlocks block, int x, int y,out Canvas resultCanvas)
         {
+            List<int> xCoordsToFill = new List<int>();
+            List<int> yCoordsToFill = new List<int>();
             for (int i = 1; i <= block.width; i++)
             {
                 int currBlockX = x + block.width - 1;
+                xCoordsToFill.Add(currBlockX);
                 if (_canvas[currBlockX, y] == CanvasCell.OccupiedCell)
                 {
-                    resultCanvas = Duplicate();
+                    resultCanvas = null;
                     return false;
                 }
             }
             for (int i = 1; i < block.height; i++)
             {
                 int currBlockY = y + _height - 1;
+                yCoordsToFill.Add(currBlockY);
                 if (_canvas[x, currBlockY] == CanvasCell.OccupiedCell)
                 {
-                    resultCanvas = Duplicate();
+                    resultCanvas = null;
                     return false;
                 }
             }
-            resultCanvas = null;
+            resultCanvas = Duplicate();
+            // Fill x & y
+            foreach(var index in xCoordsToFill)
+            {
+                resultCanvas.FillCell(index,y);
+            }
+            foreach(var index in yCoordsToFill)
+            {
+                if(index != y)
+                    resultCanvas.FillCell(x,index);
+            }
+
             return true;
+        }
+
+        public void FillCell(int x,int y)
+        {
+            if(_canvas[x,y] == CanvasCell.OccupiedCell)
+                throw new InvalidOperationException("Cell is already filled");
+
+            _canvas[x, y] = CanvasCell.OccupiedCell;
         }
 
         public Canvas Duplicate()
